@@ -1,11 +1,10 @@
 module tb;
     reg tb_clk = 1;
-    reg [7:0] data;
+    localparam TB_INPUT_WIDTH = 8;
+    reg [TB_INPUT_WIDTH-1:0] data;
 
     initial
         forever #5 tb_clk=~tb_clk;
-
-    localparam TB_INPUT_WIDTH = 8;
 
     integer i;
     integer tb_data[9:0];
@@ -38,7 +37,7 @@ module tb;
 
     high_bit_search #(
         .INPUT_WIDTH(TB_INPUT_WIDTH)
-    ) high_bit_search_instance (
+    ) high_bit_search_instance(
         .clk(tb_clk),
         .input_data(data)
     );
