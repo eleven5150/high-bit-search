@@ -11,8 +11,12 @@ simulate() {
 
 execute() {
     vvp "$SOURCE_NAME.vvp" &
+    sleep 3
+    VVP_PROCESS=$!
+    kill -2 $VVP_PROCESS
     sleep 1
-    kill -9 $!
+    kill -9 $VVP_PROCESS
+    sleep 1
 }
 
 
