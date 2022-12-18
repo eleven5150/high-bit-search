@@ -31,7 +31,9 @@
 Ширина данных задается через параметр 
 
 Testbench
+
 ![tb_param](./images/tb_param.jpg)
 
 Source code
+
 ![src_param](./images/src_param.jpg)
