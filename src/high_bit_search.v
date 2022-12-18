@@ -16,6 +16,16 @@ localparam WIDTH_PADDED = 2**LEVELS;
 reg [WIDTH_PADDED/2-1:0] valid_pair[LEVELS-1:0];
 reg [WIDTH_PADDED/2-1:0] high_value[LEVELS-1:0];
 
+integer i;
+initial 
+begin
+    for (i = 0; i < LEVELS-1; i = i + 1)
+        begin
+            valid_pair[i] = 0;
+            high_value[i] = 0;
+        end
+end
+
 generate
     genvar curr_level, bit_num;
 
