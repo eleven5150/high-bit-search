@@ -11,7 +11,7 @@ simulate() {
 
 execute() {
     vvp "$SOURCE_NAME.vvp" &
-    sleep 1
+    sleep $EXECUTE_TIME
     VVP_PROCESS=$!
     kill -2 $VVP_PROCESS
     sleep 1
@@ -37,6 +37,7 @@ print_usage() {
             Options:
             -s, --source - path to source file,
             -t, --testbench - path to testbench file,
+            -e, -exec-time - time for executing the program
             -h, --help - show this help message."
 }
 
@@ -54,6 +55,11 @@ parse_args() {
             shift
             shift
             ;;
+        -e | --exec-time)
+            EXECUTE_TIME="$2"
+            shift
+            shift
+            ;;        
         -h | --help)
             print_usage
             exit 0
@@ -73,6 +79,9 @@ parse_args() {
         echo "Testbench verilog file required!"
         print_usage
         exit 0
+    fi
+    if [ -z "$EXECUTE_TIME" ]; then
+        EXECUTE_TIME=1
     fi
 }
 
